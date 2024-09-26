@@ -1,15 +1,9 @@
 #!/bin/sh
 
-if [ -z "$1" ]
-then
-      echo "Please provide version"
-else
-    docker build -t nomanaliabbasy/spring-rest:latest .
+docker build -t nomanaliabbasy/spring-rest:latest .
 
-    #tag repo with username/reponame
-    docker tag nomanaliabbasy/spring-rest:latest nomanaliabbasy/spring-rest:$1
+#docker run --rm --name springboot-app-001 -p 8080:8080 nomanaliabbasy/spring-rest
+#docker tag nomanaliabbasy/spring-rest:latest nomanaliabbasy/spring-rest:$1
 
-    docker push nomanaliabbasy/spring-rest:$1
-fi
-    
+#docker push nomanaliabbasy/spring-rest:$1
 

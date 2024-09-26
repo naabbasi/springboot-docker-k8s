@@ -28,7 +28,7 @@ class UserTests {
 	@Test
 	@Order(1)
 	void count() {
-		Assertions.assertEquals(0, this.userRepo.count());
+		Assertions.assertEquals(3, this.userRepo.count());
 	}
 
 	@Test
