@@ -13,4 +13,4 @@ kubectl create deployment go-web-server --image=k3d-test-app-registry:5050/go-we
 
 kubectl create service clusterip go-web-server --tcp=9091:9091
 
-kubectl apply -f .\ingress.yaml
+kubectl apply -f ./ingress.yaml
