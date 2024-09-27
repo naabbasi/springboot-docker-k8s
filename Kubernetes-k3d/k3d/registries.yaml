@@ -1,4 +1,4 @@
 mirrors:
 "localhost:5050":
   endpoint:
-    - http://k3d-test-app-registry:5050
+    - http://k3d-registry.localhost:5050
