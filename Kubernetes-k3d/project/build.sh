@@ -20,3 +20,4 @@ docker push k3d-registry.localhost:5050/go-web-server:v1.0
 #kubectl create service clusterip go-web-server --tcp=9091:9091
 
 #kubectl apply -f ./ingress.yaml
+#kubectl expose deployment go-web-server --type="NodePort" --port 8080
