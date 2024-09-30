@@ -6,7 +6,8 @@ metadata:
     ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-    - http:
+    - host:
+      http:
         paths:
           - path: /
             pathType: Prefix

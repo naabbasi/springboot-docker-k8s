@@ -2,7 +2,7 @@
 
 docker rmi go-web-server && docker rmi k3d-registry.localhost:5050/go-web-server:v1.0
 
-docker build -t go-web-server .
+docker build . -t k3d-registry.localhost:5050/go-web-server:v1.0
 
 # Setup k3d
 docker tag go-web-server:latest k3d-registry.localhost:5050/go-web-server:v1.0
@@ -17,7 +17,9 @@ docker push k3d-registry.localhost:5050/go-web-server:v1.0
 #kubectl run go-web-server --image=k3d-registry.localhost:5050/go-web-server:v1.0
 #kubectl create deployment go-web-server --image=k3d-registry.localhost:5050/go-web-server:v1.0
 
+# NodePort range = 30000-32767
+#kubectl expose deployment go-web-server --type="NodePort" --port=9091
+
 #kubectl create service clusterip go-web-server --tcp=9091:9091
 
 #kubectl apply -f ./ingress.yaml
-#kubectl expose deployment go-web-server --type="NodePort" --port 8080
