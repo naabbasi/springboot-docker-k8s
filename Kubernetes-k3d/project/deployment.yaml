@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: go-web-server
+  name: go-web-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-web-server
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: go-web-server
+    spec:
+      containers:
+      - image: k3d-registry.localhost:5050/go-web-server:v1.0
+        name: go-web-server
+        resources: {}
+status: {}
+--
