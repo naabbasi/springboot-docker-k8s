@@ -18,13 +18,14 @@ docker push k3d-registry.localhost:5050/go-web-server:v1.0
 kubectl create deployment go-web-server --image=k3d-registry.localhost:5050/go-web-server:v1.0
 #kubectl create service clusterip go-web-server --tcp=9091:9091
   #clusterip working fine by using port forward
-kubectl expose deployment go-web-server --port=9091 --type=LoadBalancer
+#kubectl expose deployment go-web-server --port=9091 --type=LoadBalancer
   #access via external ip
 # NodePort range = 30000-32767
-#kubectl expose deployment go-web-server --type="NodePort" --port=9091 --target-port=80 --node-port=30001
+#kubectl expose deployment go-web-server --type="NodePort" --port=9091 --target-port=9091
+kubectl create service nodeport go-web-server --tcp=9091:9091 --node-port=30001
 #k3d cluster edit mycluster --port-add 30001-30010:30001-30010@loadbalancer
 #kubectl create service clusterip go-web-server --tcp=9091:9091
 
 #kubectl create deployment go-web-server --image=k3d-registry.localhost:5050/go-web-server:v1.0
-#kubectl apply -f ./service.yaml
+#kubectl apply -f ./service-node-port.yaml
 #kubectl apply -f ./ingress.yaml

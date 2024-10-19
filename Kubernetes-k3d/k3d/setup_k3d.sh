@@ -17,11 +17,14 @@ k3d registry delete k3d-registry.localhost && k3d cluster delete mycluster
 #kubectl run mynginx --image k3d-test-app-registry:5050/mynginx:v0.1
 #export K3D_FIX_DNS=0
 k3d registry create registry.localhost --port 5050
+#k3d registry create registry.localhost --port 5050 \
+#  --proxy-remote-url https://registry-1.docker.io `# let it mirror the Docker Hub registry` \
+#  -v ~/.local/share/docker-io-registry:/var/lib/registry `# also persist the downloaded images on the device outside the container`
 # Warning   FailedCreatePodSandBox (kubectl get events -w) - fix: K3D_FIX_DNS=0
 #k3d cluster create mycluster -p "9900:80@loadbalancer" --servers-memory 4G --registry-use k3d-registry.localhost:5050 --registry-config registries.yaml --host-pid-mode --k3s-arg "--disable=traefik@server:*"
 #k3d cluster create mycluster -p "9900:80@loadbalancer" --servers-memory 4G --k3s-arg "--disable=traefik@server:*" --registry-use k3d-registry.localhost:5050 --registry-config registries.yaml -e "K3D_FIX_DNS=0@server:*"
 #k3d cluster create mycluster --port 30001-30010:30001-30010@loadbalancer --servers-memory 4G --k3s-arg "--disable=traefik@server:*" --registry-use k3d-registry.localhost:5050 --registry-config registries.yaml -e "K3D_FIX_DNS=0@server:*"
-k3d cluster create mycluster --port 30001-30010:30001-30010@loadbalancer --servers-memory 4G --k3s-arg "--disable=traefik@server:*" --registry-use k3d-registry.localhost:5050 --registry-config registries.yaml
+K3D_FIX_DNS=0 k3d cluster create mycluster --port 30001-30010:30001-30010@loadbalancer --servers-memory 4G --k3s-arg "--disable=traefik@server:*" --registry-use k3d-registry.localhost:5050 --registry-config registries.yaml
 #k3d cluster edit mycluster --port-add 30001-30010:30001-30010@loadbalancer --port-add 9091:80@loadbalancer
 
 #Inter connection required:

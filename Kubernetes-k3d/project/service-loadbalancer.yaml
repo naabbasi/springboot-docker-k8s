@@ -5,12 +5,12 @@ metadata:
     app: go-web-server
   name: go-web-server
 spec:
-  type: NodePort
   ports:
-    - name: "go-web-server-service"
-      port: 9091
-      targetPort: 80
-      nodePort: 30001
+    - port: 9091
+      protocol: TCP
+      targetPort: 9091
   selector:
     app: go-web-server
-
+  type: LoadBalancer
+status:
+  loadBalancer: {}
