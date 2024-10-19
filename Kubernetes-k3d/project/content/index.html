@@ -5,9 +5,15 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<h1>Hello from Go...!!</h2>
+  <h1>Hello from Go...!!</h2>
+  <h4><button onclick="javascript: gotoAbout();">About</button></h4>
   <div>
     <img src="images/go.png" alt="Go Lang" class="center">
   </div>
 </body>
+<script>
+  function gotoAbout() {
+      window.location = window.origin + '/about';
+  }
+</script>
 </html>

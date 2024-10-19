@@ -6,5 +6,11 @@
 <body>
     <h1>Kubernetes Deployment Test</h2>
     <h1>{{.Hostname}}</h1>
+    <h4><button onclick="javascript: gotoHome();">Home</button></h4>
 </body>
+<script>
+    function gotoHome() {
+        window.location = window.origin + '/';
+    }
+</script>
 </html>
