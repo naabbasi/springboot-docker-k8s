@@ -20,4 +20,3 @@ spec:
         name: go-web-server
         resources: {}
 status: {}
---
